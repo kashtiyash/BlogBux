@@ -1,0 +1,5 @@
+.cover{
+    background: url('/media/bmw.jpg') center;
+    background-size: cover ;
+    height: 100vh;
+}
