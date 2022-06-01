@@ -1,6 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% block title %}
-BlogSite | Sign-Up
+BlogSite | Log Out
 {% endblock %}
 
 {% load crispy_forms_tags %}
@@ -11,14 +11,14 @@ BlogSite | Sign-Up
             <div class="col-sm-6 mx-auto">
                 <div class="card shadow my-3">
                     <div class="card-body">
-                        <h3>Sign Up Page </h3>
+                        <h3>Logout  Page </h3>
                         <hr>
-                        <form method="POST" class="bootstrap4">
-                            {% csrf_token %}
-                            {{ form | crispy }}
-                            <br>
-                            <input class="btn btn-primary btn-block" type="submit" value="Sign Up">
-                        </form>
+                        <div class="alert alert-info">
+                            You have been Logged out successfully.
+                        </div>
+                        <button type="button" class="btn btn-outline-primary">
+                        <a href="/login" >Login </a>
+                    </button>
                     </div>
                 </div>
             </div>
