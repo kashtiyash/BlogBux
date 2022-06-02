@@ -14,5 +14,20 @@ class Post(models.Model):
     class Meta:
         ordering = ('-date_created',)
 
+    def comment_count(self):
+        return self.comments_set.all().count()
+
+    def comments(self):
+        return self.comments_set.all()
+
     def __str__(self):
         return self.title
+
+
+class Comments(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    content = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.content

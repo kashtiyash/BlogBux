@@ -18,12 +18,12 @@ BlogSite | Post Details
                             <div class="col-md-8 ">
                                 <small>{{ post.date_created }}</small>
                                 {% if post.author == request.user %}
-                                <div class=" d-grid gap-2 d-flex justify-content-md-end">
-                                    <span><a class="btn btn-primary btn-sm " href="{% url 'post_edit' post.id %}">Edit </a> </span>
-                                    <span><a class="btn btn-danger btn-sm" href="{% url 'post_delete' post.id %}">Delete </a> </span>
-                                </div>
+                                    <div class=" d-grid gap-2 d-flex justify-content-md-end">
+                                        <span><a class="btn btn-primary btn-sm " href="{% url 'post_edit' post.id %}">Edit </a> </span>
+                                        <span><a class="btn btn-danger btn-sm" href="{% url 'post_delete' post.id %}">Delete </a> </span>
+                                    </div>
                                 {% endif %}
-                                    <hr>
+                                <hr>
                                 <h4>{{ post.title }}</h4>
                                 <p>
                                     {{ post.content }}
@@ -35,30 +35,31 @@ BlogSite | Post Details
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingOne">
                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                Comments
+                                  Comments : <strong>{{ post.comment_count }}</strong>
                               </button>
                             </h2>
 
                             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                               <div class="accordion-body text-justify" style="height: 250px; overflow-y: scroll;">
+                                  {% for comment in post.comments %}
                                   <p>
-                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum iure officia reiciendis vitae. Ab, ad aperiam consequatur error laudantium, libero magnam maxime nihil nulla placeat quod sunt tempora veniam vero.
+                                      <strong> {{ comment.user.username }} </strong> : {{ comment.content }}
                                   </p>
-                                  <p>
-                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aut cum doloremque doloribus dolorum, eum laborum maiores, minus nemo placeat rem suscipit tempora. Amet blanditiis consequuntur, debitis, dicta dolor dolorum error facilis numquam provident quasi quos sapiente suscipit? Animi culpa distinctio eum laboriosam magnam modi officia officiis quisquam ullam, voluptates.
-                                  </p>
-                                  <p>
-                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, voluptatum?
-                                  </p>
+                                      <hr>
+                                  {% endfor %}
                               </div>
                           </div>
+                          <form method="POST" >
+                              {% csrf_token %}
+                              {{ c_form| crispy }}
+                              <input class="btn btn-primary btn-sm my-3" type="submit" value="Comment">
+                          </form>
                     </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
+    </div>
 {% endblock %}
+

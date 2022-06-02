@@ -115,7 +115,7 @@ USE_I18N = True
 USE_TZ = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
+LOGIN_URL = "users-login"
 LOGIN_REDIRECT_URL = "Home"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -133,3 +133,12 @@ STATICFILES_DIRS =[
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'protonzener@gmail.com'
+EMAIL_HOST_USER_PASSWORD = 'Gravity@2001'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
