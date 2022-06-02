@@ -1,0 +1,26 @@
+{% extends 'mainapp/base.html' %}
+{% block title %}
+BlogSite | Post Edit
+{% endblock %}
+
+{% load crispy_forms_tags %}
+{% block main-body %}
+
+    <div class="container">
+        <div class="row mt-5 pt-3">
+            <div class="col-md-8 offset-md-2">
+                <div class="card shadow my-3">
+                    <div class="card-body">
+                    <form method="POST">
+                        {%  csrf_token %}
+                        {{ form| crispy }}
+                        <input type="submit" value="Save" class="btn btn-primary btn-sm my-2 ">
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
