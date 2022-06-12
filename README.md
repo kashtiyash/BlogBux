@@ -1,5 +1,5 @@
-# Django-Blog-Site
+# Django-Blog-Site BlogBux
 
-  This is django based blogging app which lets user to post the blogs and images.
+ <p> BlogBux is django based blogging app which lets user to post the blogs and let them to comment on others post.</p>
 
    This is based on function based views and inbuilt authentication for login purpose.
